@@ -1,11 +1,11 @@
 import express from "express";
-const app = express();
+import { app, server } from "./socket/socket.js"; // imported const app = express(); from socket.js instead
 
 import cookieParser from "cookie-parser";
 
 import dotenv from "dotenv";
 dotenv.config();
-const PORT = process.env.PORT; //fetch the PORT number from .env
+const PORT = process.env.PORT || 5000; //fetch the PORT number from .env
 
 import authRoutes from "./routes/auth.routes.js"
 import messageRoutes from "./routes/message.routes.js"
@@ -24,7 +24,9 @@ app.use("/api/users", userRoutes);
   res.send("Hello");
 }); */
 
-app.listen(PORT, ()=> {
+//app.listen() wihtout socket io implementation
+//server.listen() with socket io implementation
+server.listen(PORT, ()=> {
   connectToMongoDB();
   console.log(`Server is running on ${PORT}`);
 });

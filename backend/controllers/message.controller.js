@@ -1,5 +1,6 @@
 import Conversation from "../models/conversation.model.js";
 import Message from "../models/message.model.js";
+import { getReceiverSocketId, io } from "../socket/socket.js";
 
 export const sendMessage = async (req, res) =>{
     try{
@@ -32,6 +33,12 @@ export const sendMessage = async (req, res) =>{
         //save the conversation and message
         await conversation.save();
         await newMessage.save();
+
+        //SOCKET IO functionality (RealTime Message)
+        const receiverSocketId = getReceiverSocketId(receiverId);
+        if(receiverSocketId){                                       //if receiverSocketId is not empty then the user is online
+            io.to(receiverSocketId).emit("newMessage",newMessage);  //io.to to send event only to specific receiverSocketId user, and then emit newMessage to that receiver socket listener
+        }
 
         res.status(201).json(newMessage);
 
