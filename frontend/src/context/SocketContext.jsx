@@ -15,8 +15,8 @@ export const SocketContextProvider = ({children}) =>{
     const {authUser} = useAuthContext();
 
     useEffect(() => {
-        if(authUser){           //io("Backend url")
-            const socket = io("http://localhost:5000", {
+        if(authUser){           //io("Backend url: http://localhost:5000 ") before deployment
+            const socket = io("https://rtca-mern.onrender.com", {
                 query:{
                     userId: authUser._id      //to put authenticated userId inside socket so that we can use it in socket.js to view online user status
                 }
