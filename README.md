@@ -26,13 +26,13 @@ A real-time chat application built with the MERN stack (MongoDB, Express, React,
 ## 📸 Screenshots
 
 ### 🔑 Login Page
-![Login Page](./screenshots/login-page.PNG)
+![Login Page](./rcta-screenshots/login-page.PNG)
 
 ### 📝 Signup Page
-![Signup Page](./screenshots/signup-page.PNG)
+![Signup Page](./rcta-screenshots/signup-page.PNG)
 
 ### 💬 Chat Page
-![Chat Page](./screenshots/chat-page.PNG)
+![Chat Page](./rcta-screenshots/chat-page.PNG)
 
 ---
 
